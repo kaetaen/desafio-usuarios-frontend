@@ -1,10 +1,4 @@
 <template>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-success p-3">
-            <a class="navbar-brand" ><i class="bi bi-file-medical-fill mx-1"></i>Cadastro de Usuários</a>
-        </nav>
-    </header>
-
     <div class="container">
         <section class="m-5">
             <h2 class="text-center m-5"> Lista de usuários cadastrados </h2>
@@ -18,10 +12,10 @@
                    </div>
                    <div>
                        <span>
-                           <a class="btn bg-info mx-1"><i class="bi bi-file-text-fill mx-1"></i>Visualizar</a>
+                           <a class="btn bg-info mx-1" :href="'/view?user_id=' + user.id"><i class="bi bi-file-text-fill mx-1"></i>Visualizar</a>
                        </span>
                        <span>
-                           <a class="btn bg-primary mx-1"><i class="bi bi-pencil-fill mx-1"></i>Editar</a>
+                           <a class="btn bg-primary mx-1"  :href="'/edit?user_id=' + user.id"><i class="bi bi-pencil-fill mx-1"></i>Editar</a>
                        </span> 
                        <span>
                            <a class="btn bg-danger mx-1" @click='deleteUser(user.id)'><i class="bi bi-trash-fill mx-1"></i>Apagar</a>
@@ -29,7 +23,7 @@
                    </div>
                 </div>
                 <div class="card-footer text-center m-5">
-                    <a class="btn bg-success"><i class="bi bi-plus mx-1"></i> Novo Cadastro </a>
+                        <a class="btn bg-success" href="/register"><i class="bi bi-plus mx-1"></i> Novo Cadastro </a>
                 </div>
             </div>
         </section>
@@ -46,7 +40,7 @@ export default {
 
     data() {
         return {
-            registeredUsers: ""
+            registeredUsers: "",
         }
     },
 
@@ -54,6 +48,7 @@ export default {
         axios
         .get('http://127.0.0.1:8000/api/users')
         .then(response => (this.registeredUsers = response.data["Registered users"]))
+        .catch(() => sweetalert2.fire('Erro ao tentar orocessar dados', '', 'error'))
     },
 
     methods: {
@@ -77,7 +72,7 @@ export default {
                             sweetalert2.fire('Usuário excluído!', '', 'success')
                             location.reload()
                         })
-                        .catch(() => sweetalert2.fire('Erro ao tentar efetuar operação', '', 'info'))
+                        .catch(() => sweetalert2.fire('Erro ao tentar efetuar operação', '', 'error'))
                             
 
                 } else if (result.isDenied) {

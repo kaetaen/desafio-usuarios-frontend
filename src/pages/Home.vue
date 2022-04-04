@@ -12,18 +12,18 @@
                    </div>
                    <div>
                        <span>
-                           <a class="btn bg-info mx-1" :href="'/view?user_id=' + user.id"><i class="bi bi-file-text-fill mx-1"></i>Visualizar</a>
+                           <a class="btn bg-info mx-1 text-light" :href="'/view?user_id=' + user.id"><i class="bi bi-file-text-fill mx-1"></i>Visualizar</a>
                        </span>
                        <span>
-                           <a class="btn bg-primary mx-1"  :href="'/edit?user_id=' + user.id"><i class="bi bi-pencil-fill mx-1"></i>Editar</a>
+                           <a class="btn bg-primary text-light mx-1"  :href="'/edit?user_id=' + user.id"><i class="bi bi-pencil-fill mx-1"></i>Editar</a>
                        </span> 
                        <span>
-                           <a class="btn bg-danger mx-1" @click='deleteUser(user.id)'><i class="bi bi-trash-fill mx-1"></i>Apagar</a>
+                           <a class="btn bg-danger mx-1 text-light" @click='deleteUser(user.id)'><i class="bi bi-trash-fill mx-1"></i>Apagar</a>
                        </span>
                    </div>
                 </div>
                 <div class="card-footer text-center m-5">
-                        <a class="btn bg-success" href="/register"><i class="bi bi-plus mx-1"></i> Novo Cadastro </a>
+                        <a class="btn bg-success text-light" href="/register"><i class="bi bi-plus mx-1"></i> Novo Cadastro </a>
                 </div>
             </div>
         </section>
